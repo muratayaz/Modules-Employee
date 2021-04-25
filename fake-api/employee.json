@@ -5,6 +5,12 @@
       "department": "Bilişim",
       "salary": 8500,
       "id": 1
+    },
+    {
+      "name": "Test",
+      "department": "Test",
+      "salary": 5000,
+      "id": 2
     }
   ]
 }

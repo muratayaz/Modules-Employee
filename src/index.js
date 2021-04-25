@@ -7,6 +7,7 @@ const departmentInput = document.getElementById("department");
 const salaryInput = document.getElementById("salary");
 const employeesList = document.getElementById("employees");
 const updateEmployeeButton = document.getElementById("update");
+const filter = document.querySelector("#filter");
 
 const request = new Request("http://localhost:3000/employees");
 const ui = new UI();
@@ -20,6 +21,7 @@ function eventListeners(){
     form.addEventListener("submit",addEmployee);
     employeesList.addEventListener("click",UpdateorDelete);
     updateEmployeeButton.addEventListener("click",updateEmployee);
+    filter.addEventListener("keyup",filterEmployees);
 }
 
 function getAllEmployees(){
@@ -90,5 +92,11 @@ function updateEmployee(){
         })
         .catch(err => console.log(err));
     }
+}
+
+function filterEmployees(e){
+    const filterValue = e.target.value.toLowerCase();
+    const listItems = document.querySelectorAll(".list-employees-item");
+    ui.filterEmployeesList(filterValue,listItems);
 }
 

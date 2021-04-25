@@ -12,7 +12,7 @@ export class UI {
 
         employees.forEach(employee => {
             result += `
-            <tr>
+            <tr class="list-employees-item">
             <td>${employee.id}</td>
             <td>${employee.name}</td>
             <td>${employee.department}</td>
@@ -27,7 +27,7 @@ export class UI {
     }
     addEmployeeToUI(employee){
         this.employeesList.innerHTML +=`
-        <tr>
+        <tr class="list-employees-item">
         <td>${employee.id}</td>
         <td>${employee.name}</td>
         <td>${employee.department}</td>
@@ -63,7 +63,7 @@ export class UI {
     }
     updateEmployeeOnUI(employee,parent){
         parent.innerHTML = `
-        <tr>
+        <tr class="list-employees-item">
         <td>${employee.id}</td>
         <td>${employee.name}</td>
         <td>${employee.department}</td>
@@ -73,5 +73,21 @@ export class UI {
         </tr>
         `;
         this.clearInputs();
+    }
+    filterEmployeesList(value,list){
+
+        list.forEach((listItem)=>{
+
+            const text = listItem.children[1].textContent.toLowerCase();
+        
+            console.log(text);
+            
+            if (text.indexOf(value)) {
+                    listItem.setAttribute("style","display : none !important");
+            }
+            else {
+                    listItem.setAttribute("style","display : block");
+            }
+        });
     }
 }
